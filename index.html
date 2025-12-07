@@ -2,50 +2,91 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>OBJ Oyunum</title>
+    <title>OBJ 3D Oyun</title>
     <style>
         body { 
             margin: 0; 
             padding: 0; 
             overflow: hidden;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
         }
         canvas { 
             display: block; 
         }
         #info {
             position: absolute;
-            top: 10px;
-            left: 10px;
+            top: 15px;
+            left: 15px;
             color: white;
-            font-family: Arial;
-            background: rgba(0,0,0,0.5);
-            padding: 10px;
-            border-radius: 5px;
+            font-family: 'Arial', sans-serif;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-size: 14px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 300px;
         }
         #controls {
             position: absolute;
-            bottom: 20px;
+            bottom: 25px;
             width: 100%;
             text-align: center;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 0 15px;
         }
-        button {
-            padding: 15px 25px;
+        .control-btn {
+            padding: 14px 24px;
             margin: 5px;
-            font-size: 18px;
-            background: #4CAF50;
+            font-size: 15px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #6a11cb 0%, #2575fc 100%);
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            min-width: 120px;
+        }
+        .control-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+        .control-btn:active {
+            transform: translateY(1px);
+        }
+        #loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 20px;
+            text-align: center;
+        }
+        .rotate-btn {
+            background: linear-gradient(45deg, #ff416c 0%, #ff4b2b 100%);
+        }
+        .scale-btn {
+            background: linear-gradient(45deg, #11998e 0%, #38ef7d 100%);
+        }
+        .reset-btn {
+            background: linear-gradient(45deg, #f46b45 0%, #eea849 100%);
         }
     </style>
 </head>
 <body>
-    <div id="info">OBJ Yükleniyor...</div>
+    <div id="loading">3D Model Yükleniyor...</div>
+    <div id="info"></div>
     <div id="controls">
-        <button onclick="rotateModel()">Döndür</button>
-        <button onclick="scaleUp()">Büyüt</button>
-        <button onclick="scaleDown()">Küçült</button>
-        <button onclick="resetModel()">Reset</button>
+        <button class="control-btn rotate-btn" onclick="toggleRotate()">DÖNDÜR</button>
+        <button class="control-btn scale-btn" onclick="scaleUp()">BÜYÜT</button>
+        <button class="control-btn scale-btn" onclick="scaleDown()">KÜÇÜLT</button>
+        <button class="control-btn reset-btn" onclick="resetModel()">SIFIRLA</button>
     </div>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
