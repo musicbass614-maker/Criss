@@ -1,97 +1,405 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-    <meta charset="utf-8">
-    <title>OBJ 3D Oyun</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seni Seviyorum İsmail ❤️</title>
     <style>
-        body { 
-            margin: 0; 
-            padding: 0; 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(45deg, #0f0c29, #302b63, #24243e);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            height: 100vh;
             overflow: hidden;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-        }
-        canvas { 
-            display: block; 
-        }
-        #info {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            color: white;
             font-family: 'Arial', sans-serif;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 12px 20px;
-            border-radius: 10px;
-            font-size: 14px;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            max-width: 300px;
         }
-        #controls {
-            position: absolute;
-            bottom: 25px;
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            position: relative;
             width: 100%;
-            text-align: center;
+            height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            padding: 0 15px;
+            align-items: center;
+            z-index: 2;
         }
-        .control-btn {
-            padding: 14px 24px;
-            margin: 5px;
-            font-size: 15px;
-            font-weight: bold;
-            background: linear-gradient(45deg, #6a11cb 0%, #2575fc 100%);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-            min-width: 120px;
+        
+        /* Kalp Animasyonu */
+        .heart-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin-bottom: 50px;
         }
-        .control-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-        }
-        .control-btn:active {
-            transform: translateY(1px);
-        }
-        #loading {
+        
+        .heart {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 20px;
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(45deg, #ff0080, #ff8c00);
+            transform: rotate(45deg);
+            animation: heartbeat 1.2s infinite;
+            box-shadow: 
+                0 0 50px #ff0080,
+                0 0 100px #ff0080,
+                0 0 150px #ff0080;
+            filter: drop-shadow(0 0 20px rgba(255, 0, 128, 0.7));
+        }
+        
+        .heart:before,
+        .heart:after {
+            content: '';
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: inherit;
+            border-radius: 50%;
+        }
+        
+        .heart:before {
+            top: -60px;
+            left: 0;
+        }
+        
+        .heart:after {
+            top: 0;
+            left: -60px;
+        }
+        
+        @keyframes heartbeat {
+            0% {
+                transform: rotate(45deg) scale(1);
+                background: linear-gradient(45deg, #ff0080, #ff8c00);
+            }
+            25% {
+                transform: rotate(45deg) scale(1.1);
+                background: linear-gradient(45deg, #ff1493, #ff4500);
+            }
+            50% {
+                transform: rotate(45deg) scale(1);
+                background: linear-gradient(45deg, #ff0080, #ff8c00);
+            }
+            75% {
+                transform: rotate(45deg) scale(1.15);
+                background: linear-gradient(45deg, #dc143c, #ff6347);
+            }
+            100% {
+                transform: rotate(45deg) scale(1);
+                background: linear-gradient(45deg, #ff0080, #ff8c00);
+            }
+        }
+        
+        /* Küçük uçan kalpler */
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .floating-heart {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(45deg, #ff1493, #ff69b4);
+            transform: rotate(45deg);
+            animation: float 6s linear infinite;
+            opacity: 0.7;
+        }
+        
+        .floating-heart:before,
+        .floating-heart:after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: inherit;
+            border-radius: 50%;
+        }
+        
+        .floating-heart:before {
+            top: -15px;
+            left: 0;
+        }
+        
+        .floating-heart:after {
+            top: 0;
+            left: -15px;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: rotate(45deg) translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: rotate(45deg) translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Metin Stili */
+        .love-text {
             text-align: center;
+            margin-top: 40px;
         }
-        .rotate-btn {
-            background: linear-gradient(45deg, #ff416c 0%, #ff4b2b 100%);
+        
+        .love-text h1 {
+            font-size: 4.5rem;
+            background: linear-gradient(45deg, #ff0080, #ff8c00, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff);
+            background-size: 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: rainbow 3s linear infinite;
+            text-shadow: 
+                0 0 10px rgba(255, 255, 255, 0.3),
+                0 0 20px rgba(255, 255, 255, 0.2),
+                0 0 30px rgba(255, 255, 255, 0.1);
+            letter-spacing: 3px;
+            font-weight: 900;
+            padding: 20px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
         }
-        .scale-btn {
-            background: linear-gradient(45deg, #11998e 0%, #38ef7d 100%);
+        
+        .love-text h1:before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff0080, #ff8c00, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff);
+            background-size: 400%;
+            border-radius: 20px;
+            z-index: -1;
+            filter: blur(20px);
+            opacity: 0.7;
+            animation: rainbow 3s linear infinite;
         }
-        .reset-btn {
-            background: linear-gradient(45deg, #f46b45 0%, #eea849 100%);
+        
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 400% 50%; }
+        }
+        
+        /* Parlama Efekti */
+        .sparkle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: sparkle 1s linear forwards;
+            box-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;
+        }
+        
+        @keyframes sparkle {
+            0% {
+                transform: scale(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .love-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .heart-container {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .heart {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .heart:before,
+            .heart:after {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .heart:before {
+                top: -40px;
+            }
+            
+            .heart:after {
+                left: -40px;
+            }
         }
     </style>
 </head>
 <body>
-    <div id="loading">3D Model Yükleniyor...</div>
-    <div id="info"></div>
-    <div id="controls">
-        <button class="control-btn rotate-btn" onclick="toggleRotate()">DÖNDÜR</button>
-        <button class="control-btn scale-btn" onclick="scaleUp()">BÜYÜT</button>
-        <button class="control-btn scale-btn" onclick="scaleDown()">KÜÇÜLT</button>
-        <button class="control-btn reset-btn" onclick="resetModel()">SIFIRLA</button>
-    </div>
+    <div class="floating-hearts" id="floatingHearts"></div>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="js/OBJLoader.js"></script>
-    <script src="js/MTLLoader.js"></script>
-    <script src="js/game.js"></script>
+    <div class="container">
+        <div class="heart-container">
+            <div class="heart" id="mainHeart"></div>
+        </div>
+        
+        <div class="love-text">
+            <h1 id="loveMessage">SENİ SEVİYORUM<br>İSMAİL</h1>
+        </div>
+    </div>
+
+    <script>
+        // Uçan kalpleri oluştur
+        function createFloatingHearts() {
+            const container = document.getElementById('floatingHearts');
+            const heartCount = 30;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('floating-heart');
+                
+                // Rastgele pozisyon
+                const left = Math.random() * 100;
+                const delay = Math.random() * 6;
+                const duration = 4 + Math.random() * 4;
+                const size = 15 + Math.random() * 20;
+                
+                heart.style.left = `${left}%`;
+                heart.style.animationDelay = `${delay}s`;
+                heart.style.animationDuration = `${duration}s`;
+                heart.style.width = `${size}px`;
+                heart.style.height = `${size}px`;
+                
+                // Renk varyasyonları
+                const colors = [
+                    'linear-gradient(45deg, #ff1493, #ff69b4)',
+                    'linear-gradient(45deg, #ff0080, #ff4500)',
+                    'linear-gradient(45deg, #dc143c, #ff6347)',
+                    'linear-gradient(45deg, #ff00ff, #ff1493)',
+                    'linear-gradient(45deg, #ff0000, #ff8c00)'
+                ];
+                heart.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                container.appendChild(heart);
+            }
+        }
+        
+        // Parlama efekti oluştur
+        function createSparkle(x, y) {
+            const sparkle = document.createElement('div');
+            sparkle.classList.add('sparkle');
+            sparkle.style.left = `${x}px`;
+            sparkle.style.top = `${y}px`;
+            
+            // Rastgele renk
+            const colors = ['#ff0080', '#ff8c00', '#ffff00', '#00ff00', '#00ffff', '#0000ff', '#ff00ff'];
+            sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
+            
+            document.body.appendChild(sparkle);
+            
+            // Temizle
+            setTimeout(() => {
+                sparkle.remove();
+            }, 1000);
+        }
+        
+        // Kalp tıklama efekti
+        document.getElementById('mainHeart').addEventListener('click', function(e) {
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const x = e.clientX + (Math.random() - 0.5) * 200;
+                    const y = e.clientY + (Math.random() - 0.5) * 200;
+                    createSparkle(x, y);
+                }, i * 50);
+            }
+            
+            // Kalp büyüme efekti
+            this.style.transform = 'rotate(45deg) scale(1.3)';
+            setTimeout(() => {
+                this.style.transform = 'rotate(45deg) scale(1)';
+            }, 300);
+        });
+        
+        // Fare hareketinde parlama
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() > 0.95) {
+                createSparkle(e.clientX, e.clientY);
+            }
+        });
+        
+        // Metin yanıp sönme efekti
+        const loveMessage = document.getElementById('loveMessage');
+        let glowIntensity = 0;
+        let increasing = true;
+        
+        function textGlowEffect() {
+            if (increasing) {
+                glowIntensity += 0.02;
+                if (glowIntensity >= 1) increasing = false;
+            } else {
+                glowIntensity -= 0.02;
+                if (glowIntensity <= 0.3) increasing = true;
+            }
+            
+            loveMessage.style.textShadow = `
+                0 0 ${10 + glowIntensity * 20}px rgba(255, 255, 255, ${0.2 + glowIntensity * 0.3}),
+                0 0 ${20 + glowIntensity * 40}px rgba(255, 255, 255, ${0.1 + glowIntensity * 0.2}),
+                0 0 ${30 + glowIntensity * 60}px rgba(255, 255, 255, ${0.05 + glowIntensity * 0.1})
+            `;
+            
+            requestAnimationFrame(textGlowEffect);
+        }
+        
+        // Sayfa yüklendiğinde
+        window.onload = function() {
+            createFloatingHearts();
+            textGlowEffect();
+            
+            // Arka plan müziği eklemek için (isteğe bağlı)
+            // const audio = new Audio('https://assets.mixkit.co/music/preview/mixkit-romantic-heartbeat-1156.mp3');
+            // audio.loop = true;
+            // audio.volume = 0.3;
+            // audio.play().catch(e => console.log("Otomatik ses çalma engellendi"));
+        };
+        
+        // Arka plan rengi değişimi
+        let hue = 0;
+        function updateBackground() {
+            hue = (hue + 0.1) % 360;
+            document.body.style.background = `
+                linear-gradient(45deg, 
+                    hsl(${hue}, 70%, 15%), 
+                    hsl(${(hue + 60) % 360}, 70%, 25%), 
+                    hsl(${(hue + 120) % 360}, 70%, 15%))
+            `;
+            requestAnimationFrame(updateBackground);
+        }
+        
+        updateBackground();
+    </script>
 </body>
 </html>
