@@ -1,405 +1,211 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seni Seviyorum İsmail ❤️</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            background: linear-gradient(45deg, #0f0c29, #302b63, #24243e);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            height: 100vh;
-            overflow: hidden;
-            font-family: 'Arial', sans-serif;
-        }
-        
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .container {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 2;
-        }
-        
-        /* Kalp Animasyonu */
-        .heart-container {
-            position: relative;
-            width: 300px;
-            height: 300px;
-            margin-bottom: 50px;
-        }
-        
-        .heart {
-            position: absolute;
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(45deg, #ff0080, #ff8c00);
-            transform: rotate(45deg);
-            animation: heartbeat 1.2s infinite;
-            box-shadow: 
-                0 0 50px #ff0080,
-                0 0 100px #ff0080,
-                0 0 150px #ff0080;
-            filter: drop-shadow(0 0 20px rgba(255, 0, 128, 0.7));
-        }
-        
-        .heart:before,
-        .heart:after {
-            content: '';
-            position: absolute;
-            width: 120px;
-            height: 120px;
-            background: inherit;
-            border-radius: 50%;
-        }
-        
-        .heart:before {
-            top: -60px;
-            left: 0;
-        }
-        
-        .heart:after {
-            top: 0;
-            left: -60px;
-        }
-        
-        @keyframes heartbeat {
-            0% {
-                transform: rotate(45deg) scale(1);
-                background: linear-gradient(45deg, #ff0080, #ff8c00);
-            }
-            25% {
-                transform: rotate(45deg) scale(1.1);
-                background: linear-gradient(45deg, #ff1493, #ff4500);
-            }
-            50% {
-                transform: rotate(45deg) scale(1);
-                background: linear-gradient(45deg, #ff0080, #ff8c00);
-            }
-            75% {
-                transform: rotate(45deg) scale(1.15);
-                background: linear-gradient(45deg, #dc143c, #ff6347);
-            }
-            100% {
-                transform: rotate(45deg) scale(1);
-                background: linear-gradient(45deg, #ff0080, #ff8c00);
-            }
-        }
-        
-        /* Küçük uçan kalpler */
-        .floating-hearts {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-        
-        .floating-heart {
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            background: linear-gradient(45deg, #ff1493, #ff69b4);
-            transform: rotate(45deg);
-            animation: float 6s linear infinite;
-            opacity: 0.7;
-        }
-        
-        .floating-heart:before,
-        .floating-heart:after {
-            content: '';
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            background: inherit;
-            border-radius: 50%;
-        }
-        
-        .floating-heart:before {
-            top: -15px;
-            left: 0;
-        }
-        
-        .floating-heart:after {
-            top: 0;
-            left: -15px;
-        }
-        
-        @keyframes float {
-            0% {
-                transform: rotate(45deg) translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.7;
-            }
-            90% {
-                opacity: 0.7;
-            }
-            100% {
-                transform: rotate(45deg) translateY(-100px) rotate(360deg);
-                opacity: 0;
-            }
-        }
-        
-        /* Metin Stili */
-        .love-text {
-            text-align: center;
-            margin-top: 40px;
-        }
-        
-        .love-text h1 {
-            font-size: 4.5rem;
-            background: linear-gradient(45deg, #ff0080, #ff8c00, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff);
-            background-size: 400%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: rainbow 3s linear infinite;
-            text-shadow: 
-                0 0 10px rgba(255, 255, 255, 0.3),
-                0 0 20px rgba(255, 255, 255, 0.2),
-                0 0 30px rgba(255, 255, 255, 0.1);
-            letter-spacing: 3px;
-            font-weight: 900;
-            padding: 20px;
-            border-radius: 20px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .love-text h1:before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #ff0080, #ff8c00, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff);
-            background-size: 400%;
-            border-radius: 20px;
-            z-index: -1;
-            filter: blur(20px);
-            opacity: 0.7;
-            animation: rainbow 3s linear infinite;
-        }
-        
-        @keyframes rainbow {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 400% 50%; }
-        }
-        
-        /* Parlama Efekti */
-        .sparkle {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: white;
-            border-radius: 50%;
-            pointer-events: none;
-            animation: sparkle 1s linear forwards;
-            box-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;
-        }
-        
-        @keyframes sparkle {
-            0% {
-                transform: scale(0) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(1) rotate(360deg);
-                opacity: 0;
-            }
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .love-text h1 {
-                font-size: 2.5rem;
-            }
-            
-            .heart-container {
-                width: 200px;
-                height: 200px;
-            }
-            
-            .heart {
-                width: 80px;
-                height: 80px;
-            }
-            
-            .heart:before,
-            .heart:after {
-                width: 80px;
-                height: 80px;
-            }
-            
-            .heart:before {
-                top: -40px;
-            }
-            
-            .heart:after {
-                left: -40px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZahirAI</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:#0b1220;
+  color:#fff;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont;
+}
+header{
+  background:#020617;
+  padding:12px;
+  text-align:center;
+  font-weight:700;
+  font-size:18px;
+}
+.hidden{display:none}
+#app{padding:12px}
+
+.card{
+  background:#020617;
+  border-radius:14px;
+  padding:14px;
+}
+
+input,button{
+  width:100%;
+  padding:14px;
+  font-size:16px;
+  border:none;
+  border-radius:10px;
+  outline:none;
+}
+
+button{
+  background:#22c55e;
+  margin-top:8px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+button.red{
+  background:#ef4444;
+}
+
+#chat{
+  height:70vh;
+  overflow-y:auto;
+  padding:6px;
+}
+
+.msg{
+  max-width:85%;
+  padding:10px 12px;
+  margin:8px 0;
+  border-radius:12px;
+  white-space:pre-wrap;
+}
+
+.user{background:#2563eb;margin-left:auto}
+.ai{background:#334155}
+
+#inputBar{
+  display:flex;
+  gap:6px;
+  margin-top:8px;
+}
+#inputBar input{flex:1}
+#inputBar button{width:60px}
+</style>
 </head>
+
 <body>
-    <div class="floating-hearts" id="floatingHearts"></div>
-    
-    <div class="container">
-        <div class="heart-container">
-            <div class="heart" id="mainHeart"></div>
-        </div>
-        
-        <div class="love-text">
-            <h1 id="loveMessage">SENİ SEVİYORUM<br>İSMAİL</h1>
-        </div>
+
+<header>ZahirAI</header>
+
+<div id="app">
+
+<!-- API KEY EKRANI -->
+<div id="keyScreen" class="card">
+  <h3>Groq API Key</h3>
+  <input id="keyInput" placeholder="gsk_...">
+  <button onclick="saveKey()">Kaydet</button>
+  <p style="font-size:13px;opacity:.7">
+    Key sadece bu cihazda saklanır. GitHub’a gitmez.
+  </p>
+</div>
+
+<!-- CHAT EKRANI -->
+<div id="chatScreen" class="hidden">
+  <div class="card">
+    <div id="chat"></div>
+
+    <div id="inputBar">
+      <input id="textInput" placeholder="ZahirAI'ye yaz...">
+      <button onclick="sendMsg()">➤</button>
     </div>
 
-    <script>
-        // Uçan kalpleri oluştur
-        function createFloatingHearts() {
-            const container = document.getElementById('floatingHearts');
-            const heartCount = 30;
-            
-            for (let i = 0; i < heartCount; i++) {
-                const heart = document.createElement('div');
-                heart.classList.add('floating-heart');
-                
-                // Rastgele pozisyon
-                const left = Math.random() * 100;
-                const delay = Math.random() * 6;
-                const duration = 4 + Math.random() * 4;
-                const size = 15 + Math.random() * 20;
-                
-                heart.style.left = `${left}%`;
-                heart.style.animationDelay = `${delay}s`;
-                heart.style.animationDuration = `${duration}s`;
-                heart.style.width = `${size}px`;
-                heart.style.height = `${size}px`;
-                
-                // Renk varyasyonları
-                const colors = [
-                    'linear-gradient(45deg, #ff1493, #ff69b4)',
-                    'linear-gradient(45deg, #ff0080, #ff4500)',
-                    'linear-gradient(45deg, #dc143c, #ff6347)',
-                    'linear-gradient(45deg, #ff00ff, #ff1493)',
-                    'linear-gradient(45deg, #ff0000, #ff8c00)'
-                ];
-                heart.style.background = colors[Math.floor(Math.random() * colors.length)];
-                
-                container.appendChild(heart);
-            }
-        }
-        
-        // Parlama efekti oluştur
-        function createSparkle(x, y) {
-            const sparkle = document.createElement('div');
-            sparkle.classList.add('sparkle');
-            sparkle.style.left = `${x}px`;
-            sparkle.style.top = `${y}px`;
-            
-            // Rastgele renk
-            const colors = ['#ff0080', '#ff8c00', '#ffff00', '#00ff00', '#00ffff', '#0000ff', '#ff00ff'];
-            sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
-            
-            document.body.appendChild(sparkle);
-            
-            // Temizle
-            setTimeout(() => {
-                sparkle.remove();
-            }, 1000);
-        }
-        
-        // Kalp tıklama efekti
-        document.getElementById('mainHeart').addEventListener('click', function(e) {
-            for (let i = 0; i < 15; i++) {
-                setTimeout(() => {
-                    const x = e.clientX + (Math.random() - 0.5) * 200;
-                    const y = e.clientY + (Math.random() - 0.5) * 200;
-                    createSparkle(x, y);
-                }, i * 50);
-            }
-            
-            // Kalp büyüme efekti
-            this.style.transform = 'rotate(45deg) scale(1.3)';
-            setTimeout(() => {
-                this.style.transform = 'rotate(45deg) scale(1)';
-            }, 300);
-        });
-        
-        // Fare hareketinde parlama
-        document.addEventListener('mousemove', (e) => {
-            if (Math.random() > 0.95) {
-                createSparkle(e.clientX, e.clientY);
-            }
-        });
-        
-        // Metin yanıp sönme efekti
-        const loveMessage = document.getElementById('loveMessage');
-        let glowIntensity = 0;
-        let increasing = true;
-        
-        function textGlowEffect() {
-            if (increasing) {
-                glowIntensity += 0.02;
-                if (glowIntensity >= 1) increasing = false;
-            } else {
-                glowIntensity -= 0.02;
-                if (glowIntensity <= 0.3) increasing = true;
-            }
-            
-            loveMessage.style.textShadow = `
-                0 0 ${10 + glowIntensity * 20}px rgba(255, 255, 255, ${0.2 + glowIntensity * 0.3}),
-                0 0 ${20 + glowIntensity * 40}px rgba(255, 255, 255, ${0.1 + glowIntensity * 0.2}),
-                0 0 ${30 + glowIntensity * 60}px rgba(255, 255, 255, ${0.05 + glowIntensity * 0.1})
-            `;
-            
-            requestAnimationFrame(textGlowEffect);
-        }
-        
-        // Sayfa yüklendiğinde
-        window.onload = function() {
-            createFloatingHearts();
-            textGlowEffect();
-            
-            // Arka plan müziği eklemek için (isteğe bağlı)
-            // const audio = new Audio('https://assets.mixkit.co/music/preview/mixkit-romantic-heartbeat-1156.mp3');
-            // audio.loop = true;
-            // audio.volume = 0.3;
-            // audio.play().catch(e => console.log("Otomatik ses çalma engellendi"));
-        };
-        
-        // Arka plan rengi değişimi
-        let hue = 0;
-        function updateBackground() {
-            hue = (hue + 0.1) % 360;
-            document.body.style.background = `
-                linear-gradient(45deg, 
-                    hsl(${hue}, 70%, 15%), 
-                    hsl(${(hue + 60) % 360}, 70%, 25%), 
-                    hsl(${(hue + 120) % 360}, 70%, 15%))
-            `;
-            requestAnimationFrame(updateBackground);
-        }
-        
-        updateBackground();
-    </script>
+    <button class="red" onclick="resetAll()">Key’i ve Hafızayı Sil</button>
+  </div>
+</div>
+
+</div>
+
+<script>
+/* AYARLAR */
+const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
+const MODEL = "llama3-8b-8192";
+const SYSTEM_PROMPT = "Sen ZahirAI’sin. Türkçe konuş, net ve yardımcı ol.";
+
+/* DURUM */
+let apiKey = localStorage.getItem("groq_key");
+let memory = JSON.parse(localStorage.getItem("zahir_memory") || "[]");
+
+/* ELEMENTLER */
+const keyScreen = document.getElementById("keyScreen");
+const chatScreen = document.getElementById("chatScreen");
+const chatBox = document.getElementById("chat");
+const textInput = document.getElementById("textInput");
+
+/* BAŞLAT */
+if(apiKey) startChat();
+
+/* KEY KAYDET */
+function saveKey(){
+  const k = document.getElementById("keyInput").value.trim();
+  if(!k) return alert("Key boş olamaz");
+  localStorage.setItem("groq_key", k);
+  apiKey = k;
+  startChat();
+}
+
+/* CHAT BAŞLAT */
+function startChat(){
+  keyScreen.classList.add("hidden");
+  chatScreen.classList.remove("hidden");
+  renderChat();
+}
+
+/* RESET */
+function resetAll(){
+  localStorage.removeItem("groq_key");
+  localStorage.removeItem("zahir_memory");
+  location.reload();
+}
+
+/* CHAT GÖSTER */
+function addMsg(text, who){
+  const d = document.createElement("div");
+  d.className = "msg " + who;
+  d.textContent = text;
+  chatBox.appendChild(d);
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+function renderChat(){
+  chatBox.innerHTML = "";
+  memory.forEach(m => {
+    addMsg(m.content, m.role === "user" ? "user" : "ai");
+  });
+}
+
+/* MESAJ GÖNDER */
+async function sendMsg(){
+  const text = textInput.value.trim();
+  if(!text) return;
+  textInput.value = "";
+
+  addMsg(text,"user");
+  memory.push({role:"user",content:text});
+
+  if(memory.length > 20) memory = memory.slice(-20);
+  localStorage.setItem("zahir_memory", JSON.stringify(memory));
+
+  try{
+    const res = await fetch(GROQ_URL,{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json",
+        "Authorization":"Bearer " + apiKey
+      },
+      body:JSON.stringify({
+        model:MODEL,
+        messages:[
+          {role:"system",content:SYSTEM_PROMPT},
+          ...memory
+        ]
+      })
+    });
+
+    const data = await res.json();
+    const reply = data.choices[0].message.content;
+
+    addMsg(reply,"ai");
+    memory.push({role:"assistant",content:reply});
+    localStorage.setItem("zahir_memory", JSON.stringify(memory));
+
+  }catch(e){
+    addMsg("Hata oluştu. Key doğru mu?","ai");
+  }
+}
+</script>
+
 </body>
 </html>
