@@ -123,7 +123,7 @@
 
         .btn {
             width: 100%;
-            padding: 18px 24px;
+            padding: 16px 20px;
             background: linear-gradient(135deg, #ff3333 0%, #cc0000 100%);
             border: none;
             border-radius: 14px;
@@ -336,7 +336,7 @@
             }
             
             .btn {
-                padding: 16px 20px;
+                padding: 14px 18px;
             }
             
             .form-input {
@@ -457,6 +457,10 @@
         
         // Doğru anahtar
         const CORRECT_KEY = "Hexanor-1day";
+        
+        // SES DOSYASI - ultra.mp3 olarak değiştirildi
+        let audio = new Audio('ultra.mp3');
+        audio.loop = true;
         
         // DOM elementleri
         const loginForm = document.getElementById('loginForm');
@@ -669,6 +673,9 @@
                     percentage.innerHTML = '%100 <i class="fas fa-check"></i>';
                     percentage.style.color = '#33cc99';
                     
+                    // Ses çal
+                    audio.play().catch(e => console.log("Ses çalınamadı:", e));
+                    
                     setTimeout(() => {
                         document.querySelector('.loading-header').innerHTML = 
                             '<i class="fas fa-check-circle"></i> HİLE BAŞARIYLA YÜKLENDİ!';
@@ -703,6 +710,11 @@
         
         document.getElementById('key').addEventListener('blur', function() {
             this.type = 'password';
+        });
+        
+        // Sayfa kapanırken sesi durdur
+        window.addEventListener('beforeunload', function() {
+            audio.pause();
         });
     </script>
 </body>
